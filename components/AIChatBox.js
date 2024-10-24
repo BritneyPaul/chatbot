@@ -4,6 +4,7 @@ import Image from 'next/image'
 import SVGSendArrow from '../icons/SendArrow'
 import { useState } from 'react';
 import SVGCloseX from '../icons/CloseX';
+import chatbotIcon from '../public/images/chatbotIcon.png';
 
 const AIChatBox = () => {
   const [conversation, setConversation] = useState([
@@ -155,13 +156,16 @@ const AIChatBox = () => {
   };
 
   const handleChange = (e) => setValue(e.target.value);
+  const [isChatOpen, setIsChatOpen] = useState(true);
 
   return (
+    <>
+    {isChatOpen ? (
     <div className="mx-20 mt-20 w-[478px] h-[523px] border-2 border-[#DEDEDE] rounded-xl flex flex-col">
       <div className="flex flex-row mx-5 border-b-2 py-4">
         <h3 className="mr-2.5">Bob the bot</h3>
         <Image src={bot} alt="Bot" width={30} height={30} />
-        <div className='ml-64'><SVGCloseX/></div>
+        <div className='ml-64' onClick={()=>setIsChatOpen(false)}><SVGCloseX/></div>
       </div>
 
       {/*-------------- Chat history ---------------*/}
@@ -192,6 +196,13 @@ const AIChatBox = () => {
         </button>
       </div>
     </div>
+    ) :
+    (
+      <div className="cursor-pointer" onClick={()=>setIsChatOpen(true)}>
+        <Image src={chatbotIcon} alt="Open Chat" />
+      </div>
+    )}
+    </>
   );
 };
 
