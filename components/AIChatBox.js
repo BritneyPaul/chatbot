@@ -161,7 +161,7 @@ const AIChatBox = () => {
       <div className="flex flex-row mx-5 border-b-2 py-4">
         <h3 className="mr-2.5">Bob the bot</h3>
         <Image src={bot} alt="Bot" width={30} height={30} />
-        <div className='flex items-end justify-end'><SVGCloseX/></div>
+        <div className='ml-64'><SVGCloseX/></div>
       </div>
 
       {/*-------------- Chat history ---------------*/}
